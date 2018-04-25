@@ -2,37 +2,66 @@
 
 template <typename T>
 Lista<T>::Lista() {
-    // Completar
+    primero=NULL;
+    //ultimo=NULL;
 }
 
 // Inicializa una lista vacía y luego utiliza operator= para no duplicar el
 // código de la copia de una lista.
 template <typename T>
-Lista<T>::Lista(const Lista<T>& l) : Lista() { *this = l; } 
+Lista<T>::Lista(const Lista<T>& l) : Lista() { *this = l; }
 
 template <typename T>
 Lista<T>::~Lista() {
-    // Completar
+    Nodo* p=primero;
+    while(p!=NULL){
+        Nodo* q=p->_siguiente;
+        delete p;
+        p->_siguiente=q;
+        p->_anterior=NULL;
+        
+    }
 }
 
 template <typename T>
 Lista<T>& Lista<T>::operator=(const Lista<T>& l) {
-    // Completar
 }
 
 template <typename T>
 void Lista<T>::agregarAdelante(const T& elem) {
-    // Completar
+    Nodo* n;
+    n->_valor;
+    n->_siguiente=primero->_anterior;
+    n->_anterior=NULL;
+    primero=n;
 }
 
 template <typename T>
 void Lista<T>::agregarAtras(const T& elem) {
-    // Completar
+    Nodo* n;
+    n->_valor;
+    n->_siguiente=NULL;
+    if(primero==NULL){
+        primero=n;
+    } else{
+        Nodo* p=primero;
+        while(p->_siguiente!=NULL){
+            p=p->_siguiente;
+        }
+        p->_siguiente=n;
+    }
+    //ultimo=n;
 }
 
 template <typename T>
 int Lista<T>::longitud() const {
-    // Completar
+    Nodo* p= primero;
+    int i=0;
+    while(p!=NULL){
+        i++;
+        p=p->_siguiente;
+    }
+    return i;
 }
 
 template <typename T>
