@@ -62,6 +62,46 @@ public:
 private:
 
     struct Nodo {
+        // Hacer el constructor con listas de inicializacion
+        // Nodo(...): construyo los valores {}
+        Nodo(T x, Nodo* sig, Nodo* ant):_valor(x) {
+
+            _siguiente = sig;
+            _anterior = ant;
+        };
+
+        //~Nodo();
+
+
+        T _valor;
+        Nodo *_siguiente;
+        Nodo *_anterior;
+    };
+
+        Nodo *primero;
+        Nodo *ultimo;
+
+};
+
+#include "Lista.hpp"
+
+#endif
+
+     * @param o
+     */
+    void mostrar(std::ostream& o);
+
+    /**
+     * Utiliza el método mostrar(os) para sobrecargar el operador <<
+     */
+    friend std::ostream& operator<<(std::ostream& os, Lista& l) {
+        l.mostrar(os);
+        return os;
+    }
+
+private:
+
+    struct Nodo {
         T _valor;
         Nodo* _siguiente;
         Nodo* _anterior;
