@@ -80,6 +80,7 @@ private:
     
     Nodo *primero;
     Nodo *ultimo;
+    //Nat tam;
     
 };
 #include "Lista.hpp"
