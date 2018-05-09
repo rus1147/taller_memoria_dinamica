@@ -30,12 +30,6 @@ void Lista<T>::limpiar(){
 template <typename T>
 Lista<T>& Lista<T>::operator=(const Lista<T>& l) {
     limpiar();
-    Nodo* p=primero;
-    while(p!=NULL){
-        Nodo* q=p->_siguiente;
-        delete p;
-        p=q;
-    }
     int i=l.longitud()-1;
     while(i>=0){
         this->agregarAdelante(l.iesimo(i));
@@ -64,7 +58,7 @@ void Lista<T>::agregarAtras(const T& elem) {
         ultimo=n;
     }else{
         ultimo->_siguiente=n;
-        n->_siguiente=NULL;
+       // n->_siguiente=NULL;
         ultimo=n;
     }
 }
