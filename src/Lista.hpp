@@ -85,7 +85,19 @@ const T& Lista<T>::iesimo(Nat i) const {
 
 template <typename T>
 void Lista<T>::eliminar(Nat i) {
-    Nodo*p=primero;
+    /*Nodo *p= iesimoNodo(i);
+    if(p==primero){
+        primero=p->_siguiente;
+    }
+    else if(ultimo->_valor==iesimo(i)) {
+        ultimo->_anterior->_siguiente=NULL;
+    }
+    else{
+        p->_siguiente=p->_siguiente;
+        p->_anterior=p->_anterior;
+    }
+    delete p;*/
+        Nodo*p=primero;
     if(primero->_valor==iesimo(i)){
         primero=p->_siguiente;
     }
@@ -100,9 +112,11 @@ void Lista<T>::eliminar(Nat i) {
                 break;
             }
             else{
-            p = p->_siguiente;}
+            p = p->_siguiente;
             }
         }
+    }
+    /// falta liberar memoria, usar el aux iesimo NODO
 }
 
 template <typename T>
@@ -112,6 +126,14 @@ T& Lista<T>::iesimo(Nat i) {
         p=p->_siguiente;
     }
     return p->_valor;
+}
+template <typename T>
+typename Lista<T>::Nodo* Lista<T>::iesimoNodo(Nat i) {
+    Nodo*p=primero;
+    for(int j=0; j<i;j++){
+        p=p->_siguiente;
+    }
+    return p;
 }
 
 template <typename T>

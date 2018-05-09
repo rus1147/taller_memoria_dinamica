@@ -82,6 +82,7 @@ private:
     Nodo *ultimo;
 
     void limpiar();
+    Nodo* iesimoNodo(Nat i);
 };
 #include "Lista.hpp"
 #endif
