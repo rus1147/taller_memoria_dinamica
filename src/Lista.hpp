@@ -13,18 +13,34 @@ Lista<T>::Lista(const Lista<T>& l) : Lista() { *this = l; }
 
 template <typename T>
 Lista<T>::~Lista() {
+   limpiar();
+}
+template <typename T>
+void Lista<T>::limpiar(){
     Nodo* p=primero;
     while(p!=NULL){
         Nodo* q=p->_siguiente;
         delete p;
         p=q;
     }
+    primero=NULL;
+    ultimo=NULL;
 }
 
 template <typename T>
 Lista<T>& Lista<T>::operator=(const Lista<T>& l) {
-    this->primero=l.primero;
-    this->ultimo=l.ultimo;
+    limpiar();
+    Nodo* p=primero;
+    while(p!=NULL){
+        Nodo* q=p->_siguiente;
+        delete p;
+        p=q;
+    }
+    int i=l.longitud()-1;
+    while(i>=0){
+        this->agregarAdelante(l.iesimo(i));
+        i--;
+    }
 }
 
 template <typename T>
@@ -66,12 +82,11 @@ int Lista<T>::longitud() const {
 
 template <typename T>
 const T& Lista<T>::iesimo(Nat i) const {
-    Nodo* p=primero;
+    Nodo*p=primero;
     for(int j=0; j<i;j++){
         p=p->_siguiente;
     }
-    const T& k=p->_valor;
-    return k;
+    return p->_valor;
 }
 
 template <typename T>
@@ -98,7 +113,6 @@ void Lista<T>::eliminar(Nat i) {
 
 template <typename T>
 T& Lista<T>::iesimo(Nat i) {
-    // Completar (hint: es igual a la anterior...)
     Nodo*p=primero;
     for(int j=0; j<i;j++){
         p=p->_siguiente;
