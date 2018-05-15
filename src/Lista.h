@@ -70,9 +70,6 @@ private:
             _anterior = ant;
         };
         
-        //~Nodo();
-        
-        
         T _valor;
         Nodo *_siguiente;
         Nodo *_anterior;
@@ -82,7 +79,6 @@ private:
     Nodo *ultimo;
 
     void limpiar();
-    Nodo* iesimoNodo(Nat i);
 };
 #include "Lista.hpp"
 #endif
